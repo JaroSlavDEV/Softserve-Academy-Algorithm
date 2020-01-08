@@ -8,6 +8,7 @@
 
 function getResultOld(limit) {
     let result = [];
+    if(!Number.isInteger(limit) || (limit < 0)) throw new Error('Parameter limit isn\'t natural number.');
 
     for(let a = 1; a < limit; a++) {
         for(let b = a; b < limit; b++) {
@@ -22,6 +23,7 @@ function getResultOld(limit) {
 
 function getResultNew(limit) {
     let result = [];
+    if(!Number.isInteger(limit) || (limit < 0)) throw new Error('Parameter limit isn\'t natural number.');
 
     for(let a = 1; a < limit; a++) {
         for(let b = a; b < limit; b++) {
@@ -32,6 +34,14 @@ function getResultNew(limit) {
     }
 
     return result;
+}
+
+try {
+    const result = getResultNew(50);
+    console.log(result);
+
+} catch (error) {
+    console.log(error);
 }
 
 module.exports = getResultNew;

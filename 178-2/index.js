@@ -9,6 +9,7 @@ function getResultOld(...args) {
     let count = 0;
 
     for(let number of args) {
+        if(!Number.isInteger(number) || (number < 0)) throw new Error('Some numbers in the sequence aren\'t natural.');
         if(!(number % 3) && (number % 5)) count++;
     }
 
@@ -17,4 +18,12 @@ function getResultOld(...args) {
 
 const getResultNew = (...args) => [...args].filter(number => !(number % 3) && (number % 5)).length;
 
-module.exports = getResultNew;
+try {
+    const result = getResultOld(0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48);
+    console.log(result);
+
+} catch (error) {
+    console.log(error);
+}
+
+module.exports = getResultOld;
